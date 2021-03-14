@@ -36,7 +36,7 @@ Once setted up, you have to run all the springboot microservices of ```backend/`
 Then, open your favourite web browser and go to http://localhost:4200/
 I think that one image is better than 1000 words. So... here comes the screenshots:
 
-#Screenshots
+# Screenshots
 ![screenshot1](screenshots/screenshot1.png)
 ![screenshot2](screenshots/screenshot2.png)
 ![screenshot3](screenshots/screenshot3.png)
