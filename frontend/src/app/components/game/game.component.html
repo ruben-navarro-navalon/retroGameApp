@@ -1,0 +1,42 @@
+<main>
+    <div class="main-content">
+        <div class="white-card error" *ngIf="notFound">
+            <h1>{{errorMessage}}</h1>
+        </div>
+        <div class="white-card" *ngIf="!notFound">
+            <div class="game-data">
+                <div class="name-and-description">
+                    <h2>{{game.name}}</h2>
+                    <p>{{game.description}}</p>
+                    <div class="gallery">
+                        <img src={{game.background_image}} />
+                        <img src={{game.background_image_additional}} />
+                    </div>
+                    
+                    <div class="buttons">
+                        <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="addToCollection(game.id)">I have it</button>
+                        <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="addToWanted(game.id)">I want it!</button>
+                    </div>
+                </div>
+                <div class="other-info">
+                    <h3>Genres</h3>
+                        <p *ngFor="let genre of game.genres">{{genre.name}}</p>
+                    <h3>Rating</h3>
+                        <p>{{game.rating}}</p>
+                    <h3>Playtime</h3>
+                        <p>+ {{game.playtime}} hours</p>
+                    <h3>Tags</h3>
+                        <p *ngFor="let tag of game.tags">{{tag.name}}</p>
+                    <h3>Released</h3>
+                        <p>{{game.released}}</p>
+                    <h3>Developers</h3>
+                        <p *ngFor="let developer of game.developers">{{developer.name}}</p>
+                    <h3>Publishers</h3>
+                        <p *ngFor="let publisher of game.publishers">{{publisher.name}}</p>
+                    <h3>Platforms</h3>
+                        <p *ngFor="let platform of game.platforms">{{platform.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

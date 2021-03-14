@@ -1,0 +1,25 @@
+.white-card-sellerorbuyer {
+    border-radius: 25px;
+    padding: 25px;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    margin: 15px 0;
+}
+.sellerorbuyer-left {
+    display: flex;
+    flex-direction: column;
+}
+.sellerorbuyer-right {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h2 {
+    margin: 0px;
+}

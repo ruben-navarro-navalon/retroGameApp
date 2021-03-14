@@ -1,0 +1,27 @@
+<main>
+    <div class="main-content">
+        <h1>Login</h1>
+        <div class="form-and-image">
+            <form (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm" [formGroup]="form" >
+                
+                <mat-form-field class="form-field">
+                    <mat-label for="username">Username</mat-label>
+                    <input matInput formControlName="username" type="text" name="username">
+                    <mat-error *ngIf="username.hasError('required')">Username is <b>required</b></mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field">
+                    <mat-label for="password">Password</mat-label>
+                    <input matInput formControlName="password" type="password" name="password">
+                    <mat-error *ngIf="password.hasError('required')">Password is <b>required</b></mat-error>
+                </mat-form-field>
+
+                <button [disabled]="form.invalid" mat-flat-button color="primary">Login</button>
+                <mat-error *ngIf="invalidUsernameOrPassword">{{invalidUsernameOrPasswordError}}</mat-error>
+            </form>
+            <div class="character" >
+                <img src="assets/images/characters/{{formImage}}" (click)="getRandomImage()" title="Click me!" />
+            </div>
+        </div>
+    </div>
+</main>

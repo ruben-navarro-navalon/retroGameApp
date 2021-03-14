@@ -1,0 +1,22 @@
+<main>
+    <div class="main-content">
+        <div class="white-card">
+            <h1>{{user.username}}</h1>
+            <p>{{user.name}}</p>
+            <p>{{user.email}}</p>
+
+            <h1>Games</h1>
+            <h2>Collection:</h2>
+            <app-carousel [games]="gamesInCollection" [type]="type[0]" class="carousel-component" (removeFromCollectionEvent)="removeFromCollection($event)" (addToSellEvent)="addToSellFromCollection($event)"></app-carousel>
+            <h2>I want:</h2>
+            <app-carousel [games]="gamesThatIWant"  [type]="type[1]" class="carousel-component" (removeFromWantedEvent)="removeFromWanted($event)" (moveFromWantedToCollectionEvent)="moveFromWantedToCollection($event)"></app-carousel>
+            <h2>I sell:</h2>
+            <app-carousel [games]="gamesThatISell"  [type]="type[2]" class="carousel-component" (removeFromSellEvent)="removeFromSell($event)" (soldEvent)="sold($event)"></app-carousel>
+            <!-- <h1>Platforms</h1>
+            <h2>Collection:</h2>
+            <h2>I want:</h2>
+            <h2>I sell:</h2> -->
+            
+        </div>
+    </div>
+</main>

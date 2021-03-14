@@ -1,0 +1,31 @@
+<main>
+    <div class="main-content">
+        <div class="white-card">
+            <h1>Search people</h1>
+            <p>Search for people who sells what you want, or who wants what you sell. State is required. You can also set the town.</p>
+            <form (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm" [formGroup]="form" >
+
+                <mat-form-field class="form-field">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="state" required [(ngModel)]="stateSelected" (ngModelChange)="getTowns($event)">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let state of stateList" [value]="state.CPRO">{{state.PRO}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="state.hasError('required')">State is <b>required</b></mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="form-field">
+                    <mat-label>Town</mat-label>
+                    <mat-select formControlName="town">
+                        <mat-option value="">--</mat-option>
+                        <mat-option *ngFor="let town of townList" [value]="town.CMUM">{{town.DMUN50}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="town.hasError('required')">Town is <b>required</b></mat-error>
+                </mat-form-field>
+
+                <button [disabled]="form.invalid" mat-flat-button color="primary">Search</button>
+            </form>
+            <app-seller-or-buyer *ngFor="let sellerOrBuyer of sellerOrBuyerList" [sellerOrBuyer]="sellerOrBuyer"></app-seller-or-buyer>
+        </div>
+    </div>
+</main>

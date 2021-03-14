@@ -1,0 +1,18 @@
+<main>
+    <div class="main-content">
+        <div class="white-card">
+            <h1>Search games</h1>
+            <p></p>
+            <form (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm" [formGroup]="form" >
+                        
+                <mat-form-field class="form-field">
+                    <mat-label for="game">Game</mat-label>
+                    <input matInput formControlName="game" type="text" name="game">
+                    <mat-error *ngIf="game.hasError('required')">Game name is <b>required</b></mat-error>
+                </mat-form-field>
+
+                <button [disabled]="form.invalid" mat-flat-button color="primary">Search</button>
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,11 @@
+<main>
+    <div class="main-content">
+        <h1>RetroGameApp</h1>
+        <p>Welcome to RetroGameApp. With this webapp you can add titles to your collection, track them and search for people selling cartridges in your city. It's very easy!</p>
+        <app-register *ngIf="!userLoginService.isLogged()"></app-register>
+
+        <h2 *ngIf="userLoginService.isLogged()">Start searching games by platform or name, add to your collection lists, look for people and trade with them!</h2>
+    </div>
+</main>
+
+

@@ -1,0 +1,32 @@
+<main>
+    <div class="main-content">
+        <div class="white-card">
+            <div class="platform-data">
+                <div class="name-and-description">
+                    <h1>{{platform.name}}</h1>
+                    <p>{{platform.description}}</p>
+                    <!-- <div class="buttons">
+                        <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary">I have it</button>
+                        <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary">I want it!</button>
+                    </div> -->
+                </div>
+                <div class="other-info">
+                    <img src="assets/images/platforms/{{platform.image}}" title="{{platform.name}}" />
+                    <h3>Short name</h3>
+                        <p>{{platform.shortName}}</p>
+                    <h3>Games count</h3>
+                        <p>{{platform.gamesCount}}</p>
+                    <h3>Released</h3>
+                        <p>{{platform.released}}</p>
+                    <h3>Portable</h3>
+                        <p>{{platform.portable}}</p>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <h2>Top games from {{platform.name}}:</h2>
+                <app-carousel [games]="games" [type]="type" ></app-carousel>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,10 @@
+<div class="white-card-sellerorbuyer">
+    <div class="sellerorbuyer-left">
+        <h2 *ngIf="sellerOrBuyer.whatWants === 'sell'">{{sellerOrBuyer.username}} sells:</h2>
+        <h2 *ngIf="sellerOrBuyer.whatWants === 'buy'">{{sellerOrBuyer.username}} buys:</h2>
+        <p>{{gameName}}</p>
+    </div>
+    <div class="sellerorbuyer-right">
+        <button mat-flat-button color="primary" (click)="sendMail()">Send mail</button>
+    </div>
+</div>

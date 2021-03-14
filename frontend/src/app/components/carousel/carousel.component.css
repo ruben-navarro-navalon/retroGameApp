@@ -1,0 +1,38 @@
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.carousel-main{
+    display: flex;
+    overflow: hidden;    
+    scroll-behavior: smooth;
+}
+
+.carousel-picture {
+    display: flex;
+    height: 125px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.carousel-picture img {
+    height: 100px;
+    margin: 5px;
+    transition: 0.3s;
+}
+.carousel-picture img:hover {
+    height: 125px;
+    margin: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.arrow:hover, .info-box:hover {
+    cursor: pointer;
+}

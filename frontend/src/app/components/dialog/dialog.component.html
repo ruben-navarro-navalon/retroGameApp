@@ -1,0 +1,40 @@
+<div class="dialog">
+    <h1 mat-dialog-title>{{data.title}}</h1>
+
+    <div mat-dialog-content *ngIf="data.type === 'statusMessage' || data.type === 'sellOrBuy'">
+        {{data.body}}
+    </div>
+
+    <div mat-dialog-content *ngIf="data.type === 'platform'">
+        <div class="buttons">
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="addToCollection(data.apiId)">I have it</button>
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="addToWanted(data.apiId)">I want it!</button>
+        </div>
+    </div>
+
+    <div mat-dialog-content *ngIf="data.type === 'collection'">
+        <div class="buttons">
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="removeFromCollection(data.apiId)">Remove from collection</button>
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="addToSell(data.apiId)">Add to Sell list</button>
+        </div>
+    </div>
+
+    <div mat-dialog-content *ngIf="data.type === 'wanted'">
+        <div class="buttons">
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="removeFromWanted(data.apiId)">Remove from wanted</button>
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="moveFromWantedToCollection(data.apiId)">Move to collection</button>
+        </div>
+    </div>
+
+    <div mat-dialog-content *ngIf="data.type === 'sell'">
+        <div class="buttons">
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="removeFromSell(data.apiId)">Remove from sell</button>
+            <button *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="soldAndRemoveFromCollection(data.apiId)">SOLD! Remove from collection</button>
+        </div>
+    </div>
+
+    <div mat-dialog-content *ngIf="!userLoginService.isLogged()">
+        <h2>You have to login first</h2>
+    </div>
+
+</div>

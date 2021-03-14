@@ -1,0 +1,32 @@
+<nav id="navbar">
+    <div class="nav-content">
+        <ul>
+            <li>
+                <a mat-flat-button routerLink="" color="primary"><mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon> HOME</a>
+            </li>
+            <li class="dropdown">
+				<a mat-flat-button color="primary" class="dropdown-boton"><mat-icon aria-hidden="false" aria-label="tv icon">tv</mat-icon> PLATFORMS</a>
+				<div class="dropdown-contenido">
+					<a *ngFor="let platform of platforms" [routerLink]="['platforms', platform.shortName]">{{platform.name}}</a>
+				</div>
+            </li>
+
+            <li>
+                <a mat-flat-button routerLink="games" color="primary"><mat-icon aria-hidden="false" aria-label="videogame_asset icon">videogame_asset</mat-icon> GAMES</a>
+            </li>
+
+            <li *ngIf="userLoginService.isLogged()">
+                <a mat-flat-button routerLink="store" color="primary"><mat-icon aria-hidden="false" aria-label="store icon">store</mat-icon> STORE</a>
+            </li>
+
+            <li *ngIf="userLoginService.isLogged()">
+                <a mat-flat-button routerLink="profile" color="primary"><mat-icon aria-hidden="false" aria-label="person">person</mat-icon> PROFILE</a>
+            </li>
+
+            <li>
+                <a *ngIf="!userLoginService.isLogged()" mat-flat-button routerLink="login" color="primary"><mat-icon aria-hidden="false" aria-label="power_settings_new">power_settings_new</mat-icon> LOGIN</a>
+                <a *ngIf="userLoginService.isLogged()" mat-flat-button color="primary" (click)="logout()"><mat-icon aria-hidden="false" aria-label="power_settings_new">power_settings_new</mat-icon> LOGOUT</a>
+            </li>
+        </ul>
+    </div>
+</nav>

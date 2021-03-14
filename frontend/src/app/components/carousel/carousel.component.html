@@ -1,0 +1,15 @@
+<div class="carousel">
+    <div class="arrow">
+        <mat-icon (click)="scrollLeft()">keyboard_arrow_left</mat-icon>
+    </div>
+                
+    <div #widgetsContent class="carousel-main">
+        <div class="carousel-picture" *ngFor="let game of games; let i = index">
+            <img src={{game.image}} title="{{game.name}}" (click)="openOptions(game.name, game.apiId, i)" />
+        </div>
+    </div>
+            
+    <div class="arrow">
+        <mat-icon (click)="scrollRight()">keyboard_arrow_right</mat-icon>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div *ngIf="!openedForm" class="big-register-zone">
+    <h2>Register now and start your collection!</h2>
+    <button class="big-register-button" mat-flat-button color="primary" (click)="openForm()">SIGNUP!</button>
+    <p>Or <a routerLink="login" class="to-login">login</a> if you already have an account</p>
+</div>
+
+<div class="form-and-image" *ngIf="openedForm">
+    <form (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm" [formGroup]="form" >
+        <mat-form-field class="form-field">
+            <mat-label for="username">Username *</mat-label>
+            <input matInput formControlName="username" type="text" name="username">
+            <mat-error *ngIf="username.hasError('required')">Username is <b>required</b></mat-error>
+            <mat-error *ngIf="username.hasError('invalidusername') && !username.hasError('required')">Username is <b>invalid</b></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label for="name">Name *</mat-label>
+            <input matInput formControlName="name" type="text" name="name">
+            <mat-error *ngIf="name.hasError('required')">Name is <b>required</b></mat-error>
+            <mat-error *ngIf="name.hasError('invalidname') && !name.hasError('required')">Name is <b>invalid</b></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label for="email">Email *</mat-label>
+            <input matInput formControlName="email" type="text" name="email">
+            <mat-error *ngIf="email.hasError('required')">Email is <b>required</b></mat-error>
+            <mat-error *ngIf="email.hasError('invalidemail') && !email.hasError('required')">Email is <b>invalid</b></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" required [(ngModel)]="stateSelected" (ngModelChange)="getTowns($event)">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let state of stateList" [value]="state.CPRO">{{state.PRO}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="state.hasError('required')">State is <b>required</b></mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="form-field">
+            <mat-label>Town</mat-label>
+            <mat-select formControlName="town" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let town of townList" [value]="town.CMUM">{{town.DMUN50}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="town.hasError('required')">Town is <b>required</b></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label for="password">Password *</mat-label>
+            <input matInput formControlName="password" type="password" name="password">
+            <mat-error *ngIf="password.hasError('required')">Password is <b>required</b></mat-error>
+            <mat-error *ngIf="password.hasError('invalidpassword') && !password.hasError('required')">Password is <b>invalid</b> (May be at least 7 characters long)</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label for="passwordCheck">Confirm password *</mat-label>
+            <input matInput formControlName="passwordCheck" type="password" name="passwordCheck">
+            <mat-error *ngIf="!password.hasError('passwordMatches')">Password doesn't match</mat-error>
+        </mat-form-field>
+
+        <button [disabled]="form.invalid" mat-flat-button color="primary">Register</button>
+        <mat-error *ngIf="usernameTaken">{{usernameTakenError}}</mat-error>
+    </form>
+    <div class="character" >
+        <img src="assets/images/characters/{{formImage}}" (click)="getRandomImage()" title="Click me!" />
+    </div>
+</div>
